@@ -1,24 +1,21 @@
 package com.gloryapps.composetheming
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.gloryapps.composetheming.ui.theme.ComposeThemingTheme
+import com.gloryapps.composetheming.ui.theme.H19Button
+import com.gloryapps.composetheming.ui.theme.H19Surface
+import com.gloryapps.composetheming.ui.theme.H19Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposeThemingTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
+            H19Theme {
+                Greeting("Android")
             }
         }
     }
@@ -26,13 +23,17 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+    H19Surface {
+        H19Button(text = "Hello $name!") {}
+    }
+
 }
 
 @Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun DefaultPreview() {
-    ComposeThemingTheme {
-        Greeting("Android")
+    H19Theme {
+        Greeting(name = "Android")
     }
 }
